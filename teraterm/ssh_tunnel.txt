@@ -1,0 +1,26 @@
+; setting
+hostname = 'hostname'
+username = 'username'
+getpassword 'C:\Program Files\LogMeTT\passdir\filename.dat' 'usrpass' passstr
+
+; connection & login
+msg = hostname
+strconcat msg ':22 /ssh /2 /auth=password /user='
+strconcat msg username
+strconcat msg ' /passwd='
+strconcat msg passstr
+connect msg
+
+; connection 2nd host
+host_2nd = '2ndhostname'
+ssh_command = 'ssh '
+strconcat ssh_command host_2nd
+
+remote_prompt = '$'
+passwd_prompt = 'pass'
+
+wait remote_prompt
+sendln ssh_command
+wait passwd_prompt
+sendln passstr
+
