@@ -1,0 +1,12 @@
+; setting
+hostname = 'hostname'
+username = 'username'
+getpassword 'C:\Program Files\LogMeTT\passdir\filename.dat' 'usrpass' passstr
+
+; connection & login
+msg = hostname
+strconcat msg ':22 /ssh /2 /auth=password /user='
+strconcat msg username
+strconcat msg ' /passwd='
+strconcat msg passstr
+connect msg
